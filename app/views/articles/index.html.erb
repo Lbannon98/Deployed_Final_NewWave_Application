@@ -1,0 +1,60 @@
+<% require 'ProfanityFilter' %>
+
+<h1>Public Articles</h1>
+
+<div class="container">
+  <br>
+  <%= form_tag articles_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+
+    <br>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+
+  <% end %>
+  <br>
+
+  <% @articles.each do |article| %>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title"> <%= ProfanityFilter.check(article.headline) %> </h4>
+      <p class="card-text"> <%= ProfanityFilter.check(article.body) %> </p>
+      <h5 class="card-text">Published By: <%= article.editor.email %></h5>
+
+      <br>
+
+      <% if current_user || current_editor %>
+          <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Show', article %>
+          </button>
+        <% end %>
+
+      <% if current_editor %>
+
+        <button type="button" class="btn btn-outline-primary" style="alignment: right">
+          <%= link_to 'Edit', edit_article_path(article) %>
+        </button>
+
+        <button type="button" class="btn btn-outline-primary" style="alignment: right">
+          <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </button>
+
+      <%end %>
+
+    </div>
+  </div>
+  <% end %>
+
+  <br>
+
+  <% if current_editor %>
+
+    <button type="button" class="btn btn-outline-primary">
+      <%= link_to 'New Article', new_article_path %>
+    </button>
+
+  <%end %>
+
+</div>
+
+<%= render 'layouts/footer' %>
+

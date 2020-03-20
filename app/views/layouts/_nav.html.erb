@@ -1,0 +1,98 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="navbar-header" style="padding-top: 12px; height: 12px;">
+      <a class="navbar-brand">
+        <%= image_tag "favicon.png", size: "23x23"%>
+        <%= link_to 'NewsWave', root_path , {:style=>'color: #FFFFFF; font-weight: bold;'} %>
+      </a>
+
+      <button type="button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+      <ul class="nav navbar-nav">
+        <li>
+
+          <% if current_editor ||  current_user%>
+            <%= link_to 'Articles', articles_path %>
+          <%end %>
+
+        </li>
+        <li>
+          <% if current_editor ||  current_user%>
+            <%= link_to 'Profile', profiles_path %>
+          <%end %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a class="dropdown-item">
+              <% if !current_user %>
+              <%= link_to 'Sign up as a Reader', new_user_registration_path %>
+              <%end %>
+            </a>
+
+            <a class="dropdown-item">
+              <% if !current_user %>
+               <%= link_to 'Sign in as a Reader', new_user_session_path %>
+              <% else %>
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+              <%end %>
+            </a>
+
+            <a class="dropdown-item">
+              <% if current_user %>
+                <%= link_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
+            <% end %>
+            </a>
+
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Editor
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item">
+            <% if !current_editor %>
+              <%= link_to 'Sign up as an Editor', new_editor_registration_path %>
+            <% end %>
+          </a>
+
+          <a class="dropdown-item">
+            <% if !current_editor %>
+              <%= link_to 'Sign in as an Editor', new_editor_session_path %>
+            <% else %>
+              <%= link_to 'Sign out', destroy_editor_session_path, method: :delete %>
+            <%end %>
+          </a>
+
+          <a class="dropdown-item">
+            <% if current_editor %>
+              <%= link_to "Cancel my account", registration_path(current_editor), data: { confirm: "Are you sure?" }, method: :delete %>
+            <% end %>
+          </a>
+
+        </div>
+      </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

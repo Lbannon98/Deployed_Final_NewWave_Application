@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: newsApp_development
+
+test:
+  <<: *default
+  database: newsApp_test
+
+production:
+  <<: *default
+  database: newsApp_production
+  username: newsApp
+  password: <%= ENV['NEWSAPP_DATABASE_PASSWORD'] %>
+

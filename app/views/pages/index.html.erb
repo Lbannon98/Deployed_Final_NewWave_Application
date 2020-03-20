@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="row">
+
+      <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: left;">
+        <% if @breadcrumbs && @breadcrumbs.any? %>
+
+          <h4>Last Visited</h4>
+          <ul>
+            <% @breadcrumbs[0..1].each do |breadcrumb| %>
+              <li><%= link_to breadcrumb, breadcrumb %></li>
+            <% end %>
+          </ul>
+
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br/>
+
+  <div class="row">
+
+    <div class="col-sm-12 col-md-3 col-lg-2">
+      <%= render "apiCalls/indexWeatherApi" %>
+    </div>
+
+    <div class="col-sm-12 col-md-9 col-lg-10">
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h2 class="display-4">Welcome to NewsWave <%= @user_name %></h2>
+          <p class="lead">For the most up-to-date news, all in the one place! Get news from multiple sources as well as contribute by making an Editor account!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-4 col-md-4"></div>
+
+  </div>
+
+</div>
+
+<div class="container">
+
+  <div class="row">
+
+    <%= render "apiCalls/indexNewsApiHeadlines" %>
+
+  </div>
+
+</div>
+
+<%= render 'layouts/footer' %>
