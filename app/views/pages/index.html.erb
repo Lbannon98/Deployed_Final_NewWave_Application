@@ -4,6 +4,7 @@
 
     <div class="row">
 
+      <!-- Session which displays last visted URL -->
       <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: left;">
         <% if @breadcrumbs && @breadcrumbs.any? %>
 
@@ -25,12 +26,14 @@
 
   <div class="row">
 
+    <!-- Rendering in the open weather api response -->
     <div class="col-sm-12 col-md-3 col-lg-2">
       <%= render "apiCalls/indexWeatherApi" %>
     </div>
 
     <div class="col-sm-12 col-md-9 col-lg-10">
 
+      <!-- Including cookie within the jumbotron -->
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h2 class="display-4">Welcome to NewsWave <%= @user_name %></h2>
@@ -49,11 +52,12 @@
 <div class="container">
 
   <div class="row">
-
+    <!-- Rendering in the newsApi response -->
     <%= render "apiCalls/indexNewsApiHeadlines" %>
 
   </div>
 
 </div>
 
+<!-- Rendering in the footer -->
 <%= render 'layouts/footer' %>

@@ -33,8 +33,6 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(comment_params)
 
     @comment.user = current_user
-    @editor = @article.editor.email
-    @content = @comment.content
 
     if @comment.save
       # Save the review successfully

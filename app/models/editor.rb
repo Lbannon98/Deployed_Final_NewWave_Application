@@ -12,8 +12,10 @@ class Editor < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Relationships
   has_many :articles, :dependent => :destroy
 
+  # Welcome email sent after creation of editor
   after_create :send_welcome_email
   def send_welcome_email
     UserMailer.welcome_email_for_editor(self.email).deliver_now

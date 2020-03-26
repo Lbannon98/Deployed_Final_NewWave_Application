@@ -17,8 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -47,12 +46,10 @@ gem 'sass-rails', '>= 3.2'
 #Jquery
 gem 'jquery-rails'
 
-#Httparty - API Requests
-gem 'httparty', '~> 0.17.3'
-
+#NewsApi
 gem 'news-api'
 
-#Open-Weather
+#Open Weather Api
 gem 'open-weather'
 
 # Custom Gem

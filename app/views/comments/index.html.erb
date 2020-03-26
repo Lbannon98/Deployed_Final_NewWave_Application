@@ -2,6 +2,7 @@
 
 <h1>Comments from Article: <%= ProfanityFilter.check(@article.headline) %></h1>
 
+<!-- View for article comments which is looped through and displayed as a cardview, with the profanity filter called on the input -->
 <% for comment in @comments %>
   <div class="card">
     <div class="card-block">
@@ -10,6 +11,7 @@
 
       <br>
 
+      <!-- Only display, Show Edit, Delete for User -->
       <% if current_user %>
 
         <button type="button" class="btn btn-outline-primary">
@@ -31,6 +33,7 @@
 
 <% end %>
 
+<!-- Display Back for both users -->
 <% if current_user || current_editor%>
 
   <button type="button" class="btn btn-outline-primary" style="alignment: right">
