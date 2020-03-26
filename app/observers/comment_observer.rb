@@ -1,5 +1,8 @@
 class CommentObserver < ActiveRecord::Observer
 
+  # Observer method observers for creation of comment
+  # Instance variables give access to the data from the comment
+  # Call comment mailer with the variables as the parameters
   def after_create(comment)
 
     @user = comment.user.email

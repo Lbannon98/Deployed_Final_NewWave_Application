@@ -3,7 +3,10 @@
 <h1>Public Articles</h1>
 
 <div class="container">
+
   <br>
+
+  <!-- Search functionality -->
   <%= form_tag articles_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
 
@@ -13,6 +16,7 @@
   <% end %>
   <br>
 
+  <!-- View for articles which is looped through and displayed as a cardview, with the profanity filter called on each input -->
   <% @articles.each do |article| %>
   <div class="card">
     <div class="card-block">
@@ -22,12 +26,14 @@
 
       <br>
 
+      <!-- Display show for both users -->
       <% if current_user || current_editor %>
           <button type="button" class="btn btn-outline-primary">
             <%= link_to 'Show', article %>
           </button>
         <% end %>
 
+      <!-- Only display Edit, Delete for editors -->
       <% if current_editor %>
 
         <button type="button" class="btn btn-outline-primary" style="alignment: right">
@@ -46,6 +52,7 @@
 
   <br>
 
+  <!-- Only display New Article for editors -->
   <% if current_editor %>
 
     <button type="button" class="btn btn-outline-primary">
@@ -56,5 +63,6 @@
 
 </div>
 
+<!-- Render in footer partial -->
 <%= render 'layouts/footer' %>
 
